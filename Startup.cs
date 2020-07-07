@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using ServerApp.Models;
 
 namespace ServerApp
@@ -29,6 +30,12 @@ namespace ServerApp
             services.AddControllersWithViews();
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddSwaggerGen(options => {
+                options.SwaggerDoc("v1",
+                    new OpenApiInfo { Title = "SportsStore API", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +65,15 @@ namespace ServerApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "SportsStore API");
+            });
+
+
+
 
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "../ClientApp";

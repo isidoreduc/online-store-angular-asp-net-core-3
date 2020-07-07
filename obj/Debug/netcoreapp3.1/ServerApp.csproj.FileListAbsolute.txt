@@ -79,3 +79,7 @@ D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\runtimes\wi
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
