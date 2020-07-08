@@ -37,6 +37,7 @@ namespace ServerApp.Controllers
                 .Include(p => p.Supplier).ThenInclude(s => s.Products)
                 .Include(p => p.Ratings)
                 .FirstOrDefault(p => p.ProductId == id);
+            
             if (result != null)
             {
                 if (result.Supplier != null)

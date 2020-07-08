@@ -27,7 +27,11 @@ namespace ServerApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // ignoring the null references (f.x. when solving the circular reference exception)
+            services.AddControllersWithViews()
+                .AddJsonOptions(opts => 
+                    { opts.JsonSerializerOptions.IgnoreNullValues = true; });
+
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
