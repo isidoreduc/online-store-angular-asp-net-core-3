@@ -74,7 +74,7 @@ namespace ServerApp
 
 
 
-
+            //last
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "../ClientApp";
                 spa.UseAngularCliServer("start");
