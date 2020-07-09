@@ -65,9 +65,24 @@ namespace ServerApp.Controllers
 
 
         [HttpGet]
-        public IEnumerable<Product> GetProducts(bool related = false)
+        public IEnumerable<Product> GetProducts( string category, string search, bool related = false)
         {
             IQueryable<Product> query = _ctx.Products;
+
+            // query filtering based on category
+            if(!string.IsNullOrWhiteSpace(category))
+            {
+                string catLower = category.ToLower();
+                query = query.Where(p => p.Category.Contains(catLower));
+            }
+
+            // query search in name or description
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                string searchLower = search.ToLower();
+                query = query.Where(p => p.Name.Contains(searchLower) || p.Description.Contains(searchLower));
+            }
+
             if (related)
             {
                 query = query.Include(p => p.Supplier).Include(p => p.Ratings);
