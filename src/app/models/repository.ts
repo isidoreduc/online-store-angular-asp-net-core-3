@@ -1,4 +1,5 @@
 import { Product } from './product.model';
+import { Filter } from './configClasses.repository';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,9 +9,12 @@ const productsUrl = '/api/products';
 export class Repository {
   product: Product;
   products: Product[];
+  filter: Filter = new Filter();
 
   constructor(private http: HttpClient) {
-    this.getProducts(true);
+    this.filter.category = 'soccer';
+    this.filter.related = true;
+    this.getProducts(); // last, to apply the filter
   }
 
   getProduct(id: number) {
@@ -19,9 +23,14 @@ export class Repository {
       .subscribe((p) => (this.product = p));
   }
 
-  getProducts(related = false) {
-    this.http
-      .get<Product[]>(`${productsUrl}?related=${related}`)
-      .subscribe((prods) => (this.products = prods));
+  getProducts() {
+    let url = `${productsUrl}?related=${this.filter.related}`;
+    if (this.filter.category) {
+      url += `&category=${this.filter.category}`;
+    }
+    if (this.filter.search) {
+      url += `&search=${this.filter.search}`;
+    }
+    this.http.get<Product[]>(url).subscribe((prods) => (this.products = prods));
   }
 }
