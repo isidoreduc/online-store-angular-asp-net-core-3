@@ -1,5 +1,5 @@
 <div class="p-2">
-  <table class="table table-sm">
+  <table *ngFor="let product of products" class="table table-sm">
     <tr>
       <th>Name</th>
       <td>{{ product?.name || "Loading..." }}</td>
@@ -17,32 +17,34 @@
       <td>{{ product?.price || "Loading..." }}</td>
     </tr>
     <!-- Supplier -->
-    <tr>
-      <th colspan="2" class="bg-info">Supplier</th>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td>{{ product?.supplier?.name }}</td>
-    </tr>
-    <tr>
-      <th>City</th>
-      <td>{{ product?.supplier?.city }}</td>
-    </tr>
-    <tr>
-      <th>State</th>
-      <td>{{ product?.supplier?.state }}</td>
-    </tr>
-    <tr>
-      <th>Products</th>
-      <td>{{ product?.supplier?.products?.length }}</td>
-    </tr>
+    <div *ngIf="related">
+      <tr>
+        <th colspan="2" class="bg-info">Supplier</th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>{{ product?.supplier?.name }}</td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td>{{ product?.supplier?.city }}</td>
+      </tr>
+      <tr>
+        <th>State</th>
+        <td>{{ product?.supplier?.state }}</td>
+      </tr>
+      <tr>
+        <th>Products</th>
+        <td>{{ product?.supplier?.products?.length }}</td>
+      </tr>
+    </div>
     <!-- Ratings -->
-    <tr>
+    <!-- <tr>
       <th colspan="2" class="bg-info">Ratings</th>
     </tr>
     <tr *ngFor="let item of product.ratings">
       <th>Stars</th>
       <td>{{ item.stars }}</td>
-    </tr>
+    </tr> -->
   </table>
 </div>

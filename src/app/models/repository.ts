@@ -2,21 +2,26 @@ import { Product } from './product.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+const productsUrl = '/api/products';
+
 @Injectable()
 export class Repository {
-  productData: Product;
+  product: Product;
+  products: Product[];
 
   constructor(private http: HttpClient) {
-    this.getProduct(1);
+    this.getProducts(true);
   }
 
   getProduct(id: number) {
-    this.http.get<Product>('/api/products/' + id).subscribe((p) => {
-      this.productData = p;
-    });
+    this.http
+      .get<Product>(`${productsUrl}/${id}`)
+      .subscribe((p) => (this.product = p));
   }
 
-  get product(): Product {
-    return this.productData;
+  getProducts(related = false) {
+    this.http
+      .get<Product[]>(`${productsUrl}?related=${related}`)
+      .subscribe((prods) => (this.products = prods));
   }
 }
