@@ -1,21 +1,21 @@
 <div class="p-2">
-  <table *ngFor="let product of products" class="table table-sm">
-    <tr>
-      <th>Name</th>
-      <td>{{ product?.name || "Loading..." }}</td>
-    </tr>
-    <tr>
-      <th>Category</th>
-      <td>{{ product?.category || "Loading..." }}</td>
-    </tr>
-    <tr>
-      <th>Description</th>
-      <td>{{ product?.description || "Loading..." }}</td>
-    </tr>
-    <tr>
-      <th>Price</th>
-      <td>{{ product?.price || "Loading..." }}</td>
-    </tr>
+  <table class="table table-sm table-striped">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Ratings</th>
+      </tr>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.supplier?.name || "None" }}</td>
+        <td>{{ product.ratings?.length || 0 }}</td>
+      </tr>
+    </tbody>
     <!-- Supplier -->
     <div *ngIf="related">
       <tr>
