@@ -11,7 +11,7 @@ const suppliersUrl = '/api/suppliers';
 export class Repository {
   product: Product;
   products: Product[];
-  suppliers: Supplier[];
+  suppliers: Supplier[] = [];
   filter: Filter = new Filter();
 
   constructor(private http: HttpClient) {
