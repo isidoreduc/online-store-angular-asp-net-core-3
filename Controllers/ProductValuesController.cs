@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Models;
+using ServerApp.Models.TargetBindings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,25 @@ namespace ServerApp.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] ProductData pdata)
+        {
+            if (ModelState.IsValid)
+            {
+                Product p = pdata.Product;
+                if (p.Supplier != null && p.Supplier.SupplierId != 0)
+                {
+                    _ctx.Attach(p.Supplier);
+                }
+                _ctx.Add(p);
+                _ctx.SaveChanges();
+                return Ok(p.ProductId);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
 
 
 
