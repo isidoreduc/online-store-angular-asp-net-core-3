@@ -52,9 +52,17 @@ export class AppComponent {
     p.category = 'Modified Category';
     this.repo.replaceProduct(p);
   }
-  
+
   replaceSupplier() {
     let s = new Supplier(3, 'Modified Supplier', 'New York', 'NY');
     this.repo.replaceSupplier(s);
+  }
+
+  deleteProduct() {
+    this.repo.deleteProduct(1);
+  }
+  
+  deleteSupplier() {
+    this.repo.deleteSupplier(2);
   }
 }

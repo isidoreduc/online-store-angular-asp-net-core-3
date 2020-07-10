@@ -80,7 +80,7 @@ export class Repository {
       .put(`${productsUrl}/${prod.productId}`, data)
       .subscribe(() => this.getProducts());
   }
-  
+
   replaceSupplier(supp: Supplier) {
     let data = {
       name: supp.name,
@@ -91,4 +91,18 @@ export class Repository {
       .put(`${suppliersUrl}/${supp.supplierId}`, data)
       .subscribe(() => this.getProducts());
   }
+
+  deleteProduct(id: number) {
+    this.http.delete(`${productsUrl}/${id}`)
+        .subscribe(() => this.getProducts());
+  }
+  
+deleteSupplier(id: number) {
+    this.http.delete(`${suppliersUrl}/${id}`)
+        .subscribe(() => {
+            this.getProducts();
+            //this.getSuppliers();
+        });
+}
+
 }
