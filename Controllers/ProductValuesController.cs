@@ -127,6 +127,26 @@ namespace ServerApp.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public IActionResult ReplaceProduct(long id, [FromBody] ProductData pdata)
+        {
+            if (ModelState.IsValid)
+            {
+                Product p = pdata.Product;
+                p.ProductId = id;
+                if (p.Supplier != null && p.Supplier.SupplierId != 0)
+                {
+                    _ctx.Attach(p.Supplier);
+                }
+                _ctx.Update(p);
+                _ctx.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
 
 
 
