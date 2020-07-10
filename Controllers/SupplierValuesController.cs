@@ -58,6 +58,15 @@ namespace ServerApp.Controllers
             }
         }
 
+        
+        [HttpDelete("{id}")]
+        public void DeleteSupplier(long id)
+        {
+            context.Remove(new Supplier { SupplierId = id });
+            context.SaveChanges();
+        }
+
+
     }
 
 }

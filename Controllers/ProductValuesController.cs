@@ -148,6 +148,12 @@ namespace ServerApp.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public void DeleteProduct(long id)
+        {
+            _ctx.Products.Remove(new Product { ProductId = id });
+            _ctx.SaveChanges();
+        }
 
 
 
