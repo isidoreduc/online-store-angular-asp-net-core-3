@@ -4,7 +4,7 @@ import { Product } from '../models/product.model';
 
 @Component({
   selector: 'product-table',
-  templateUrl: './productsTable.component.html',
+  templateUrl: './productTable.component.html',
 })
 export class ProductTableComponent {
   constructor(private repo: Repository) {}
