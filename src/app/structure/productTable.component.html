@@ -1,15 +1,24 @@
 <div>
-  <table class="table table-stripped">
+  <table class="table table-striped">
     <tbody>
       <tr>
         <th>Name</th>
         <th>Category</th>
         <th>Price</th>
+        <th></th>
       </tr>
       <tr *ngFor="let item of products">
         <td>{{ item.name }}</td>
         <td>{{ item.category }}</td>
         <td>{{ item.price }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="selectProduct(item.productId)"
+          >
+            Details
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
