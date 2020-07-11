@@ -1,0 +1,16 @@
+<div>
+  <table class="table table-stripped">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+      </tr>
+      <tr *ngFor="let item of products">
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
