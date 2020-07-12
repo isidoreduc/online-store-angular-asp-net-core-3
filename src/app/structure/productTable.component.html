@@ -14,7 +14,7 @@
         <td>
           <button
             class="btn btn-primary btn-sm"
-            (click)="selectProduct(item.productId)"
+            [routerLink]="['/detail', item.productId]"
           >
             Details
           </button>
