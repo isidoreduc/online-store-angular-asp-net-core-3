@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ModelModule } from './models/module.model';
+import { StoreModule } from './store/store.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductTableComponent } from './structure/productTable.component';
-import { CategoryFilterComponent } from './structure/categoryFilter.component';
-import { ProductDetailComponent } from './structure/productDetail.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductTableComponent, CategoryFilterComponent, ProductDetailComponent],
-  imports: [BrowserModule, AppRoutingModule, ModelModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, ModelModule, StoreModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
