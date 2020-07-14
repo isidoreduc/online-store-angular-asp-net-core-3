@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Repository } from '../models/repository';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'store-product-list',
@@ -8,8 +9,16 @@ import { Repository } from '../models/repository';
 export class ProductListComponent implements OnInit {
   constructor(private repo: Repository) {}
 
-  get products() {
-    return this.repo.products;
+  get products(): Product[] {
+    if (this.repo.products != null && this.repo.products.length > 0) {
+      let pageIndex =
+        (this.repo.paginationObject.currentPage - 1) *
+        this.repo.paginationObject.productsPerPage;
+      return this.repo.products.slice(
+        pageIndex,
+        pageIndex + this.repo.paginationObject.productsPerPage
+      );
+    }
   }
 
   ngOnInit() {}
