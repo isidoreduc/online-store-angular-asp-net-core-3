@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Repository } from '../models/repository';
+import { NavigationService } from '../models/navigation.service';
 
 @Component({
-      selector: 'store-categoryFilter',
-      templateUrl: 'categoryFilter.component.html'
+  selector: 'store-categoryFilter',
+  templateUrl: 'categoryFilter.component.html',
 })
-
 export class CategoryFilterComponent implements OnInit {
-      constructor(private repo:Repository) { }
+  constructor(public service: NavigationService) {}
 
-      ngOnInit() { }
+  ngOnInit() {}
 }
