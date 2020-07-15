@@ -10,6 +10,10 @@ import { PaginationComponent } from './pagination.component';
 import { ProductListComponent } from './productList.component';
 import { RatingsComponent } from './ratings.component';
 import { StoreRootComponent } from './storeRoot.component';
+import { CheckoutDetailsComponent } from './checkoutDetails.component';
+import { CheckoutPaymentComponent } from './checkoutPayment.component';
+import { CheckoutSummaryComponent } from './checkoutSummary.component';
+import { OrderConfirmationComponent } from './orderConfirmation.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, RouterModule],
@@ -22,6 +26,10 @@ import { StoreRootComponent } from './storeRoot.component';
     ProductListComponent,
     RatingsComponent,
     CartDetailComponent,
+    CheckoutDetailsComponent,
+    CheckoutPaymentComponent,
+    CheckoutSummaryComponent,
+    OrderConfirmationComponent,
   ],
   providers: [],
 })
