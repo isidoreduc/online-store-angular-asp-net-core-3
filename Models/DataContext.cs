@@ -11,8 +11,9 @@ namespace ServerApp.Models
             public DbSet<Product> Products { get; set; }
             public DbSet<Supplier> Suppliers { get; set; }
             public DbSet<Rating> Ratings { get; set; }
+            public DbSet<Order> Orders { get; set; }
 
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
                 modelBuilder.Entity<Product>().HasMany<Rating>(p => p.Ratings)
                     .WithOne(r => r.Product).OnDelete(DeleteBehavior.Cascade);
