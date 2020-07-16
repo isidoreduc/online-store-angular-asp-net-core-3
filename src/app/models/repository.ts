@@ -51,6 +51,12 @@ export class Repository {
     });
   }
 
+  getSuppliers() {
+    this.http
+      .get<Supplier[]>(suppliersUrl)
+      .subscribe((s) => (this.suppliers = s));
+  }
+
   createProduct(prod: Product) {
     let data = {
       name: prod.name,

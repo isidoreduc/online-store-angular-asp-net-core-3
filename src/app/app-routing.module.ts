@@ -8,12 +8,16 @@ import { CheckoutSummaryComponent } from './store/checkoutSummary.component';
 import { OrderConfirmationComponent } from './store/orderConfirmation.component';
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((module) => module.AdminModule),
+  },
   { path: 'checkout/step1', component: CheckoutDetailsComponent },
   { path: 'checkout/step2', component: CheckoutPaymentComponent },
   { path: 'checkout/step3', component: CheckoutSummaryComponent },
   { path: 'checkout/confirmation', component: OrderConfirmationComponent },
   { path: 'checkout', redirectTo: '/checkout/step1', pathMatch: 'full' },
-
   { path: 'cart', component: CartDetailComponent },
   { path: 'store/:category/:page', component: StoreRootComponent },
   { path: 'store/:categoryOrPage', component: StoreRootComponent },
