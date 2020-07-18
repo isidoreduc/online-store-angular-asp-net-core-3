@@ -90,3 +90,4 @@ D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.A
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
