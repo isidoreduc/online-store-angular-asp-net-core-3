@@ -85,3 +85,8 @@ D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Swashbuckle
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\libman.json
 D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.SqlServer.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\DEVELOPMENT\ANGULAR\SportsStore\ServerApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

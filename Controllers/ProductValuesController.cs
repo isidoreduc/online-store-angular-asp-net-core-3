@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Models;
 using ServerApp.Models.TargetBindings;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ServerApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     [Route("api/products")]
     public class ProductValuesController : Controller
     {
@@ -20,6 +22,7 @@ namespace ServerApp.Controllers
             _ctx = ctx;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public Product GetProduct(long id)
         {
@@ -64,7 +67,7 @@ namespace ServerApp.Controllers
             return result;
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetProducts( string category, string search, bool related = false, bool metadata = false)
         {
@@ -84,7 +87,7 @@ namespace ServerApp.Controllers
                 query = query.Where(p => p.Name.Contains(searchLower) || p.Description.Contains(searchLower));
             }
 
-            if (related)
+            if (related && HttpContext.User.IsInRole("Administrator")) 
             {
                 query = query.Include(p => p.Supplier).Include(p => p.Ratings);
                 List<Product> data = query.ToList();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Models;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace ServerApp.Controllers
 {
+    [Authorize(Roles ="Admistrator")]
     [Route("/api/orders")]
     [ApiController]
     public class OrderValuesController : Controller
@@ -32,6 +34,7 @@ namespace ServerApp.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult CreateOrder([FromBody] Order order)
         {
