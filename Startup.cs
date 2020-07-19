@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Antiforgery;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ServerApp.Models;
@@ -21,9 +23,16 @@ namespace ServerApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+              .SetBasePath(env.ContentRootPath)
+              .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+              .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+              .AddEnvironmentVariables()
+              .AddCommandLine(System.Environment.GetCommandLineArgs()
+                  .Skip(1).ToArray());
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -69,7 +78,7 @@ namespace ServerApp
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, 
-            IServiceProvider services, IAntiforgery antiforgery)
+            IServiceProvider services, IAntiforgery antiforgery, IHostApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -83,7 +92,13 @@ namespace ServerApp
             }
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                RequestPath = "",
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(),
+                    "./wwwroot/app"))
+            });
 
             app.UseSession();
 
@@ -126,22 +141,32 @@ namespace ServerApp
                     defaults: new { controller = "Home", action = "Index" });
             });
 
-            app.UseSwagger();
-            app.UseSwaggerUI(options => {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json",
-                    "SportsStore API");
-            });
+            //app.UseSwagger();
+            //app.UseSwaggerUI(options => {
+            //    options.SwaggerEndpoint("/swagger/v1/swagger.json",
+            //        "SportsStore API");
+            //});
 
 
 
             //last
-            app.UseSpa(spa => {
-                spa.Options.SourcePath = "../ClientApp";
-                spa.UseAngularCliServer("start");
-            });
+            //app.UseSpa(spa => {
+            //    spa.Options.SourcePath = "../ClientApp";
+            //    spa.UseAngularCliServer("start");
+            //});
 
-            SeedData.SeedDatabase(services.GetRequiredService<DataContext>());
-            IdentitySeedData.SeedDatabase(services).Wait();
+            //SeedData.SeedDatabase(services.GetRequiredService<DataContext>());
+            //IdentitySeedData.SeedDatabase(services).Wait();
+
+            if ((Configuration["INITDB"] ?? "false") == "true")
+            {
+                System.Console.WriteLine("Preparing Database...");
+                SeedData.SeedDatabase(services.GetRequiredService<DataContext>());
+                IdentitySeedData.SeedDatabase(services).Wait();
+                System.Console.WriteLine("Database Preparation Complete");
+                lifetime.StopApplication();
+            }
+
         }
     }
 }

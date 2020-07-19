@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aapAOm7OloeVWqi9rZm76jIl0SytVfNegJ1s7h8LsTRePEcpan3ltd4mMEXr6K09y0e63VsBUu8lCHqpTafSJw==",
+  "dgSpecHash": "dcYhVFVl0riL7YnFZrwN4OCBbv3g4RyEGKMMJ3fCk+19iho+ppFslwe9oF43xa/KKkNBqatKscN+C4Is52Ug1Q==",
   "success": true,
   "projectFilePath": "D:\\DEVELOPMENT\\ANGULAR\\SportsStore\\ServerApp\\ServerApp.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.6\\microsoft.extensions.configuration.3.1.6.nupkg.sha512",
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.6\\microsoft.extensions.configuration.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.6\\microsoft.extensions.configuration.binder.3.1.6.nupkg.sha512",
+    "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.configuration.commandline\\3.1.5\\microsoft.extensions.configuration.commandline.3.1.5.nupkg.sha512",
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.6\\microsoft.extensions.dependencyinjection.3.1.6.nupkg.sha512",
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.6\\microsoft.extensions.dependencyinjection.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\AR\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.6\\microsoft.extensions.fileproviders.abstractions.3.1.6.nupkg.sha512",
