@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ServerApp.Controllers
 {
-    
+    [AutoValidateAntiforgeryToken]
     [Route("/api/session")]
     [ApiController]
     public class SessionValuesController : Controller

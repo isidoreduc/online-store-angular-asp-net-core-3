@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ServerApp.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [Authorize(Roles="Administrator")]
     [Route("api/suppliers")]
     public class SupplierValuesController : Controller

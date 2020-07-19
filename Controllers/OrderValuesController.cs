@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace ServerApp.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [Authorize(Roles ="Admistrator")]
     [Route("/api/orders")]
     [ApiController]

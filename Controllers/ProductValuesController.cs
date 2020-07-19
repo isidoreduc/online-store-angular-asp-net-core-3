@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ServerApp.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [Authorize(Roles = "Administrator")]
     [Route("api/products")]
     public class ProductValuesController : Controller
